@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Button, Image, Heading, Text, Divider, Stack, Card, CardBody, CardFooter, SimpleGrid, HStack,Spinner } from '@chakra-ui/react';
+import {Button, Image, Heading, Text, Divider, Stack, Card, CardBody, CardFooter,Spinner } from '@chakra-ui/react';
 import Navbar from './Navbar'
 
 function PostDetails() {
