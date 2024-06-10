@@ -3,6 +3,7 @@ import './App.css';
 import Posts from './components/Posts'
 import Response from './components/Response'
 import { Route, Routes } from 'react-router-dom';
+import PostDetails from './components/PostDetails';
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
     <Routes>
     <Route path='/' element={<Response/>}/>
     <Route path='/create_user' element={<Posts/>}/>
+    <Route path="/post/:id" element={<PostDetails/>} />
+
     </Routes>
     </div>
   );

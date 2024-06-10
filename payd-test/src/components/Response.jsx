@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Image, Heading, Text, Divider, Stack, Card, CardBody, CardFooter, SimpleGrid, HStack } from '@chakra-ui/react';
 import axios from 'axios';
 import Navbar from './Navbar'
+import { useNavigate } from 'react-router-dom';
 
 function Response() {
   const [loading, setLoading] = useState(false)
@@ -9,6 +10,7 @@ function Response() {
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
+  const navigate=useNavigate()
 
   // Function to get results from the API immediately when the page loads
   useEffect(() => {
@@ -33,6 +35,10 @@ function Response() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+  // open the post by id 
+   const handlePostById = (id) => {
+    navigate(`/post/${id}`);
+  }
 
   return (
   	<div>
@@ -50,11 +56,9 @@ function Response() {
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">Title</Heading>
+                <Heading size="md">{post.title}</Heading>
                 <Text>
-                  {post.title}
                 </Text>
-                <Heading size="md">Body</Heading>
                 <Text>
                 {post.body}
                 </Text>
@@ -64,7 +68,9 @@ function Response() {
             <CardFooter>
                 <Button variant="ghost" colorScheme="green">
                   User_Id: {post.userId}
-                </Button>             
+                </Button> 
+                <button onClick={() => handlePostById(post.id)} 
+                  className="bg-lime-500 px-5 py-2 text-white">View More</button>            
             </CardFooter>
           </Card>
         ))}
